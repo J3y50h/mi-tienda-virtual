@@ -1,0 +1,139 @@
+:host {
+  --primary-color: #3880ff;
+  --secondary-color: #3dc2ff;
+  --background-color: #f4f5f8;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --text-light: #666666;
+}
+
+ion-content {
+  --background: var(--background-color);
+}
+
+ion-header {
+  ion-toolbar {
+    --background: white;
+    --border-width: 0;
+  }
+
+  ion-back-button {
+    --color: var(--text-color);
+    --icon-font-size: 18px;
+    --text-font-size: 16px;
+    --icon-font-weight: bold;
+  }
+
+  ion-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 10px;
+  }
+}
+
+.order-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-color);
+  }
+
+  .order-buttons {
+    display: flex;
+    gap: 10px;
+
+    .order-button {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--primary-color);
+      background: white;
+      color: var(--primary-color);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &.active {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      &:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+}
+
+.no-results {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h5 {
+    color: var(--text-color);
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 14px;
+  }
+}
+
+ion-searchbar {
+  --background: #444;
+  --color: white;
+  --placeholder-color: rgba(255, 255, 255, 0.7);
+  --icon-color: white;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  
+  &::part(search-icon) {
+    color: white;
+  }
+  
+  &::part(cancel-button) {
+    color: white;
+  }
+  
+  &::part(input) {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  &::part(clear-button) {
+    color: white;
+  }
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

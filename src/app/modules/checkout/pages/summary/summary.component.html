@@ -1,0 +1,46 @@
+<ion-content class="ion-padding">
+  <div class="summary-container" *ngIf="userData">
+    <div class="success-animation" [class.show-animation]="showAnimation">
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+    
+    <h1 class="thank-you">¡Gracias por tu compra!</h1>
+    <p class="order-message">Tu pedido ha sido procesado con éxito.</p>
+
+    <div class="order-details">
+      <h2>Detalles del pedido</h2>
+      
+      <div class="detail-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Nombre</span>
+          <span class="detail-value">{{ userData.name }} {{ userData.lastName }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <ion-icon name="location-outline"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Dirección de envío</span>
+          <span class="detail-value">{{ userData.address.street }}, {{ userData.address.city }} ({{ userData.address.zipcode }})</span>
+        </div>
+      </div>
+
+      <div class="detail-item total">
+        <ion-icon name="card-outline"></ion-icon>
+        <div class="detail-content">
+          <span class="detail-label">Total pagado</span>
+          <span class="detail-value">${{ total !== null ? (total | number:'1.2-2') : 'Error' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ion-button expand="block" class="continue-shopping" routerLink="/products/home">
+      <ion-icon name="bag-handle-outline" slot="start"></ion-icon>
+      Seguir comprando
+    </ion-button>
+  </div>
+</ion-content>

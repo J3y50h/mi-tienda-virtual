@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Mi tienda virtual" defaultHref="/products/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="danger" *ngIf="cartItemCount > 0">{{ cartItemCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="product">
+  <div class="product-container">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <div class="product-image">
+      <img [src]="product.image" [alt]="product.title">
+    </div>
+    <div class="product-info">
+      <div class="category-price">
+        <span class="category">{{ product.category }}</span>
+        <span class="price">$ {{ product.price }}</span>
+      </div>
+      <div class="description-section">
+        <h2>Description</h2>
+        <p>{{ product.description }}</p>
+      </div>
+      <div class="product-stats">
+        <div class="stat">
+          <span class="stat-label">Bought: </span>
+          <span class="stat-value">120+</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">{{ product.rating.rate }} ⭐</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón para agregar al carrito -->
+  <ion-button expand="full" class="add-to-cart-btn" (click)="addToCart()">
+    Add to Cart
+  </ion-button>
+</ion-content>

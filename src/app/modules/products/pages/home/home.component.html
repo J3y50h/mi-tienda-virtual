@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <p>Mi tienda virtual</p>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="danger" *ngIf="cartItemCount > 0">{{cartItemCount}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="order-section">
+    <h2>Ordenar por Precio</h2>
+    <div class="order-buttons">
+      <button 
+        class="order-button" 
+        [class.active]="sortDirection === 'asc'" 
+        (click)="setSortDirection('asc')">
+        Menor
+      </button>
+      <button 
+        class="order-button" 
+        [class.active]="sortDirection === 'desc'" 
+        (click)="setSortDirection('desc')">
+        Mayor
+      </button>
+    </div>
+  </div>
+
+  <ion-searchbar 
+    placeholder="Buscar productos..." 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="onSearchChange()"
+    animated="true"
+    showCancelButton="focus">
+  </ion-searchbar>
+
+  <app-filter-dropdown 
+    [categories]="categories" 
+    (categorySelected)="filterByCategory($event)">
+  </app-filter-dropdown>
+
+  <div class="products-grid">
+    <app-product-card 
+      *ngFor="let product of filteredProducts" 
+      [product]="product">
+    </app-product-card>
+  </div>
+
+  <div class="no-results" *ngIf="filteredProducts.length === 0">
+    <h5>No se encontraron productos</h5>
+    <p>Intenta ajustar tus filtros o términos de búsqueda.</p>
+  </div>
+</ion-content>
+

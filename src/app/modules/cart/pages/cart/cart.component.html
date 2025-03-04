@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Mi tienda virtual" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.empty]="cartItems.length === 0">
+  <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
+    <div class="cart-items">
+      <app-cart-item
+        *ngFor="let item of cartItems"
+        [product]="item.product"
+        [quantity]="item.quantity"
+        (increase)="increaseQuantity($event)"
+        (decrease)="decreaseQuantity($event)"
+        (remove)="removeItem($event)">
+      </app-cart-item>
+    </div>
+    
+    <div class="cart-footer">
+      <div class="total-section">
+        <span class="total-label">Total</span>
+        <span class="total-amount">${{ total | number:'1.2-2' }}</span>
+      </div>
+      <button class="checkout-button" routerLink="/checkout">
+        Checkout
+      </button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <h2>Tu carrito está vacío</h2>
+      <ion-button routerLink="/products/home" fill="solid" color="primary">
+        Ver Productos
+      </ion-button>
+    </div>
+  </ng-template>
+</ion-content>
