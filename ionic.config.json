@@ -1,0 +1,7 @@
+{
+  "name": "mi-tienda-virtual",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
